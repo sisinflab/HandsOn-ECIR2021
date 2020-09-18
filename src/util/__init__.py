@@ -1,3 +1,5 @@
+import datetime
+import functools
 import sys
 import os
 import socket
@@ -34,3 +36,18 @@ def cpu_count():
 
 def get_server_name():
     return socket.gethostname()
+
+def timethis(some_function):
+    """
+    Wrapper that profiles the time spent in a function
+    """
+
+    @functools.wraps(some_function)
+    def wrapper(*args, **kwargs):
+        started_at = datetime.datetime.now()
+        result = some_function(*args, **kwargs)
+        print("Function {name} completed in {time}".format(name=some_function.__name__,
+                                                           time=datetime.datetime.now() - started_at))
+        return result
+
+    return wrapper

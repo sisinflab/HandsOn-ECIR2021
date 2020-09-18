@@ -57,6 +57,7 @@ class DataLoader(object):
         self.load_test_file(path_test_data)
         self._user_input, self._item_input_pos = self.sampling()
         print('{0} - Loaded'.format(path_train_data))
+        print('{0} - Loaded'.format(path_test_data))
 
     def get_length(self, train_name, test_name):
         train = pd.read_csv(train_name, sep='\t', header=None)

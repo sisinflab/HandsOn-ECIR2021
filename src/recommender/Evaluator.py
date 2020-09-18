@@ -37,8 +37,9 @@ def _evaluate_input(user):
         item_input = np.array(item_input)[:, None]
         return user_input, item_input
     except:
-        print('******'+user)
+        print('******' + user)
         return 0, 0
+
 
 def _eval_by_user(user):
     # get predictions of data in testing set
@@ -104,10 +105,10 @@ class Evaluator:
         """
         results = self.model.get_full_inference().numpy()
         with open('{0}{1}_best{2}_top{3}_rec.tsv'.format(self.model.path_output_rec_result,
-                                                          attack_name + self.model.path_output_rec_result.split('/')[
-                                                              -2],
-                                                          self.model.best,
-                                                          self.k),
+                                                         attack_name + self.model.path_output_rec_result.split('/')[
+                                                             -2],
+                                                         self.model.best,
+                                                         self.k),
                   'w') as out:
             for u in range(results.shape[0]):
                 results[u][self.data.train_list[u]] = -np.inf
@@ -115,3 +116,26 @@ class Evaluator:
                 top_k_score = results[u][top_k_id]
                 for i, value in enumerate(top_k_id):
                     out.write(str(u) + '\t' + str(value) + '\t' + str(top_k_score[i]) + '\n')
+
+    def evaluate(self):
+        """
+        Runtime Evaluation of Accuracy Performance (top-k)
+        """
+        global _model
+        global _K
+        global _dataset
+        global _feed_dicts
+        _dataset = self.data
+        _model = self.model
+        _K = self.k
+        _feed_dicts = self.eval_feed_dicts
+
+        res = []
+        for user in range(self.model.data.num_users):
+            res.append(_eval_by_user(user))
+
+        hr, ndcg, auc = (np.array(res).mean(axis=0)).tolist()
+        print("Performance@%d \tHR: %.4f\tnDCG: %.4f\tAUC: %.4f" % (
+            _K, hr[_K - 1], ndcg[_K - 1], auc[_K - 1]))
+
+        return hr[_K - 1], ndcg[_K - 1], auc[_K - 1]
