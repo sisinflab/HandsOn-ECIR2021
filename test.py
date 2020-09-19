@@ -139,7 +139,7 @@ class BPRMF(RecommenderModel):
         user_input, item_input_pos, item_input_neg = batches
         adv_reg = 1
         self.initialize_perturbations()
-        print(len(user_input))
+
         for batch_idx in range(len(user_input)):
             with tf.GradientTape() as t:
                 t.watch([self.embedding_P, self.embedding_Q])
@@ -236,7 +236,7 @@ before_adv_hr, before_adv_ndcg, before_adv_auc = recommender_model.evaluator.eva
 
 #%%
 
-recommender_model.execute_adversarial_attack(epsilon=0.1)
+recommender_model.execute_adversarial_attack(epsilon=0.5)
 
 #%% md
 
@@ -256,7 +256,7 @@ print('AUC decreases by %.2f%%' % ((1-after_adv_auc/before_adv_auc)*100))
 
 #%%
 
-recommender_model.adversarial_train(adversarial_epochs=5, epsilon=0.1)
+recommender_model.adversarial_train(adversarial_epochs=5, epsilon=0.5)
 
 
 #%% md
@@ -274,7 +274,7 @@ before_adv_hr, before_adv_ndcg, before_adv_auc = recommender_model.evaluator.eva
 
 #%%
 
-recommender_model.execute_adversarial_attack(epsilon=0.1)
+recommender_model.execute_adversarial_attack(epsilon=0.5)
 
 #%% md
 
