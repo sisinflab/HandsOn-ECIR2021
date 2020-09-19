@@ -135,7 +135,7 @@ class Evaluator:
             res.append(_eval_by_user(user))
 
         hr, ndcg, auc = (np.array(res).mean(axis=0)).tolist()
-        print("Performance@%d \tHR: %.4f\tnDCG: %.4f\tAUC: %.4f" % (
+        print("Performance@%d\n\tHR: %.4f\tnDCG: %.4f\tAUC: %.4f" % (
             _K, hr[_K - 1], ndcg[_K - 1], auc[_K - 1]))
 
         return hr[_K - 1], ndcg[_K - 1], auc[_K - 1]
