@@ -1,6 +1,6 @@
 # Adversarial Learning for Recommendation: Applications for Security and Generative Tasks – Concept to Code
 
-To start the ***Hands-on Session*** access the Jupyter Notebook: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/sisinflab/HandsOn-RecSys2020/71779854edd8eb89baac6c5e29edff2adba2d92c)
+To start the ***Hands-on Session*** access the Jupyter Notebook: [![Binder](https://hub.gke1.mybinder.org/user/sisinflab-handson-recsys2020-gmacv2j0/notebooks/main.ipynb)
 
 Source: 🤖[Adversarial Learning for Recommendation: Applications for Security and Generative Tasks – Concept to Code](https://github.com/merrafelice/HandsOn-RecSys2020) repository_
 Video Presentation: [Here](https://player.vimeo.com/video/460856978)
