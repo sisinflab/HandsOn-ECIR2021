@@ -4,6 +4,7 @@ To start the ***Hands-on Session*** access the Jupyter Notebook: [![Binder](http
 
 Source: 🤖[Adversarial Learning for Recommendation: Applications for Security and Generative Tasks – Concept to Code](https://github.com/merrafelice/HandsOn-RecSys2020) repository_
 Video Presentation: [Here](https://player.vimeo.com/video/460856978)
+
 Sldies: [Here](https://github.com/sisinflab/amlrecsys-tutorial/blob/master/Tutorial-AML-RecSys2020.pdf)
 
 
